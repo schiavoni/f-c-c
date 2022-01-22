@@ -1,8 +1,23 @@
-# Getting Started with Create React App
+# Frontend Developer Candidate Assignment - Rafael Schiavoni
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple web app that allows a user to select their car from a directory of registered cars.
 
-## Available Scripts
+As an example:
+As a user, I want to tell Friday what is my car so I can proceed with the registration process and get my simulation for the ensurance.
+
+
+# How it was build
+
+Bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Available Scripts / How to run
+
+To get started, clone this repo and run:
+
+### `npm install`
+
+
+# TODO - scripts to get started
 
 In the project directory, you can run:
 
