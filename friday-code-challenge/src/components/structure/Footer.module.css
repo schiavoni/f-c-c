@@ -1,0 +1,15 @@
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-light-white);
+  padding: 0 var(--margin-general);
+  position: relative;
+  margin: 0;
+  bottom: 0;
+  min-height: var(--struct-size-footer-min-height);
+}
+
+footer small {
+  font-size: 0.8rem;
+}

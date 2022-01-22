@@ -1,0 +1,16 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-light-white);
+  padding: 0 var(--margin-general);
+  box-shadow: 0px -3px 6px #333;
+  min-height: var(--struct-size-header-min-height);
+}
+header > div:first {
+  flex-grow: 1;
+}
+h1 {
+  text-transform: uppercase;
+  color:var(--color-light-black)
+}

@@ -1,0 +1,5 @@
+a {
+    color: var(--color-light-purple);
+    text-decoration: none;
+    text-transform: lowercase;
+  }
