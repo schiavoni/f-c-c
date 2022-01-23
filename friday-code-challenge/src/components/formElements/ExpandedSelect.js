@@ -4,14 +4,17 @@ import classes from "./ExpandedSelect.module.css";
 
 function ExpandedSelect(props) {
   const [activeIndex, setActiveIndex] = useState(null);
+  const filtered = props.options.filter(o => String(o).toUpperCase().startsWith(props.filter.toUpperCase()));
 
   function handleClick(index) {
     setActiveIndex(index);
+    props.onSet(filtered[index]);
   }
 
   return (
-    <div className={classes.ExpandedSelect}>
-      {props.options.map(function (clickable, i) {
+    <div className={classes.ExpandedSelectPosition}>
+        <div className={classes.ExpandedSelect}>
+      {filtered.map(function (clickable, i) {
         return (
           <Clickable
             key={clickable}
@@ -22,6 +25,7 @@ function ExpandedSelect(props) {
           />
         );
       })}
+    </div>
     </div>
   );
 }

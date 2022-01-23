@@ -13,6 +13,8 @@
   --color-light-purple: #8a67c8;
   --color-light-purple-hover: #6734ba;
   --color-light-purple-shadow: rgb(126 87 194 / 20%);
+  --color-light-purple-shadow-opaque: #cecbe7;
+  --color-light-warning: rgb(201, 43, 43);
 
   --margin-general: 3rem;
 

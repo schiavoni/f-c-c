@@ -1,52 +1,95 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ExpandedSelect from "./ExpandedSelect";
 import classes from "./ByTextSelect.module.css";
 
 function ByTextSelect(props) {
-  const [selectIsLoading, setSelectIsLoading] = useState(false);
-  const [selectIsLoaded, setSelectIsLoaded] = useState(false);
+  const src = "http://localhost:8080/api/" + props.src;
+  const [showSelect, setShowSelect] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  const [inputText, setInputText] = useState("");
+  const [filterText, setFilterText] = useState("");
   const [options, setOptions] = useState([]);
 
-  const myId = "ByTextSelect" + props.title.replace(/[\W_]+/g,"");
+  const myId = "ByTextSelect" + props.title.replace(/[\W_]+/g, "");
 
-  let lastTypingStartTime = 0;
-  let timerTyping = undefined;
+  function changeHandler(e) {
+    setInputText(e.target.value);
 
-  function typingHandler(e) {
-    setSelectIsLoading(true);
-    let now = Date.now();
-    let betweenTypingTime = 0;
-    
-    if (lastTypingStartTime > 0){
-      betweenTypingTime = now - lastTypingStartTime;
-      lastTypingStartTime = now;
+    if (e.target.value) {
+      setFilterText(String(e.target.value).substring(0, 1));
     } else {
-      lastTypingStartTime = now;
+      setFilterText("");
     }
 
-    if(betweenTypingTime < 500){
-      clearTimeout(timerTyping);
-    }
-    timerTyping = setTimeout(trySearch,1000);
+    setShowSelect(true);
   }
 
-  function trySearch(){
-    console.log("trySearch!");
-    setOptions(["item 1", "item 2", "item 3"]);
+  function setSelectHandler(selected) {
+    setInputText(selected);
+    setShowSelect(false);
+    props.onSelect(selected);
   }
+
+  const handleFocus = (event) => {
+    event.target.select();
+    setShowSelect(showSelect ? false : true);
+  };
+
+  function forceReload() {
+    fetch(src)
+      .then((response) => response.json())
+      .then(
+        (result) => {
+          setIsLoading(false);
+          setHasError(false);
+          setOptions(result);
+        },
+        (error) => {
+          setIsLoading(false);
+          setHasError(true);
+        }
+      );
+  }
+
+  useEffect(() => {
+    setIsLoading(true);
+    forceReload();
+  }, []);
 
   return (
-    <div className={selectIsLoading? "selectIsLoading " + classes.ByTextSelect:classes.ByTextSelect}>
+    <div
+      className={
+        isLoading
+          ? classes.selectIsLoading + " " + classes.ByTextSelect
+          : hasError
+          ? classes.hasError + " " + classes.ByTextSelect
+          : classes.ByTextSelect
+      }
+    >
       <label htmlFor={myId}>{props.title}:</label>
-      <div>
+      <div className={classes.input}>
         <input
           id={myId}
+          ref={props.innerRef}
           type="text"
           placeholder="VW, BWM, Ford..."
-          onKeyPress={typingHandler}
+          onChange={changeHandler}
+          onClick={handleFocus}
+          value={inputText}
         />
       </div>
-      {selectIsLoading && <ExpandedSelect options={options} />}
+      <div className={classes.ExpandedSelect}>
+        {showSelect && (
+          <ExpandedSelect
+            options={options}
+            filter={filterText}
+            onSet={setSelectHandler}
+          />
+        )}
+      </div>
+      {hasError && <button onClick={forceReload}>Reload {props.title}</button>}
     </div>
   );
 }

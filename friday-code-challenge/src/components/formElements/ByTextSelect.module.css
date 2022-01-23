@@ -1,27 +1,60 @@
 .ByTextSelect {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .ByTextSelect label {
-    font-size: 1.3rem;
-    margin:0 0 0.5rem 0;
-    color:var(--color-light-grey-title);
+  font-size: 1.3rem;
+  margin: 0 0 0.5rem 0;
+  color: var(--color-light-grey-title);
 }
-.ByTextSelect input[type=text] {
-    padding:1rem;
-    border:0px solid var(--color-light-grey);
+.ByTextSelect input[type="text"] {
+  padding: 1rem;
+  border: 0px solid var(--color-light-grey);
+  border-radius: 0.5rem;
+  box-shadow: var(--color-light-purple-shadow) 0px 1px 8px 0px;
+  min-width: 100%;
+  color: var(--color-light-grey-title);
+  float: left;
+}
+.ByTextSelect input[type="text"]:focus,
+.ByTextSelect input[type="text"]:focus {
+  outline: none;
+}
+.input {
+  position: relative;
+}
+.selectIsLoading .input::after {
+  display: inline-block;
+  content: " ";
+  width: 1.5rem;
+  height: 1.5rem;
+  background: url(/public/oval.svg) center center no-repeat;
+  filter: brightness(0.5);
+  background-size: cover;
+  margin: 0.7rem 0 0 -2.3rem;
+  padding: 0;
+  position: absolute;
+  z-index: 2;
+}
+.hasError .input::after {
+  display: inline-block;
+  content: "Could not load =/ Pls try again";
+  font-size: 0.8rem;
+  width: 15rem;
+  height: 1.5rem;
+  margin: -1.5rem 0 0 -15.3rem;
+  padding: 0;
+  position: absolute;
+  z-index: 2;
+  text-align: right;
+  color:var(--color-light-warning)
+}
+.ByTextSelect>button{
+    background: rgb(255, 166, 0);
+    border:1px solid rgb(255, 166, 0, 80%);
     border-radius: 0.5rem;
-    box-shadow: var(--color-light-purple-shadow) 0px 1px 8px 0px;
-    min-width: 100%;
     color:var(--color-light-grey-title);
 }
-.ByTextSelect input[type=text]:focus, .ByTextSelect input[type=text]:focus{
-    outline: none;
-}
-.ByTextSelect.selectIsLoading input::after{
-    display: block;
-    content:" ";
-    width:5px;
-    height:5px;
-    background:url(/public/oval.svg) black;
+.ExpandedSelect {
+    position: relative; width: 100%;
 }
