@@ -1,4 +1,4 @@
-import ByTextSelect from "./../ByTextSelect"
+import ByTextSelect from "../formElements/ByTextSelect"
 import classes from "./SectionSelectCar.module.css"
 
 function SectionSelectCar(){
@@ -13,17 +13,16 @@ function SectionSelectCar(){
           <div className="withProgress-ul">
             <ul>
               <li>
-                <ByTextSelect src="makes" />
+                <ByTextSelect src="makes" title="Brands" />
               </li>
               <li>
-                <label htmlFor="brandTxt">Model:</label>
-                <input type="text" placeholder="Brand" />
+                <ByTextSelect src="models" title="Model" />
               </li>
               <li>
                 <label htmlFor="brandTxt">Engine capacity between:</label>
-                <input type="range" min="500" max="5000" value="1000" />
+                <input type="range" min="500" max="5000" defaultValue="1000" />
                 <p>and</p>
-                <input type="range" min="500" max="5000" value="1000" />
+                <input type="range" min="500" max="5000" defaultValue="1000" />
               </li>
               <li>
                 <label htmlFor="brandTxt">Check:</label>

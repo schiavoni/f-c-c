@@ -1,4 +1,4 @@
-import A from "./../A";
+import A from "./../general/A";
 import classes from "./Header.module.css";
 
 let title = new Date().toLocaleDateString("en-US", { weekday: "long" });

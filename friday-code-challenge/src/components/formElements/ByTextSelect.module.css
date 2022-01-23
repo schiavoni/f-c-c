@@ -1,0 +1,27 @@
+.ByTextSelect {
+    display: flex;
+    flex-direction: column;
+}
+.ByTextSelect label {
+    font-size: 1.3rem;
+    margin:0 0 0.5rem 0;
+    color:var(--color-light-grey-title);
+}
+.ByTextSelect input[type=text] {
+    padding:1rem;
+    border:0px solid var(--color-light-grey);
+    border-radius: 0.5rem;
+    box-shadow: var(--color-light-purple-shadow) 0px 1px 8px 0px;
+    min-width: 100%;
+    color:var(--color-light-grey-title);
+}
+.ByTextSelect input[type=text]:focus, .ByTextSelect input[type=text]:focus{
+    outline: none;
+}
+.ByTextSelect.selectIsLoading input::after{
+    display: block;
+    content:" ";
+    width:5px;
+    height:5px;
+    background:url(/public/oval.svg) black;
+}
