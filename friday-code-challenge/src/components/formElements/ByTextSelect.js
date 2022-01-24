@@ -6,7 +6,8 @@ function ByTextSelect(props) {
   const src = "http://localhost:8080/api/" + props.src;
   const [showSelect, setShowSelect] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
+  const [hasLoadError, setHasLoadError] = useState(false);
+  const [hasNoEntryError, setHasNoEntryError] = useState(false);
 
   const [inputText, setInputText] = useState("");
   const [filterText, setFilterText] = useState("");
@@ -38,17 +39,20 @@ function ByTextSelect(props) {
   };
 
   function forceReload() {
+    console.log(src);
     fetch(src)
       .then((response) => response.json())
       .then(
         (result) => {
           setIsLoading(false);
-          setHasError(false);
+          setHasLoadError(false);
           setOptions(result);
+          setHasNoEntryError((result.length < 1));
         },
         (error) => {
           setIsLoading(false);
-          setHasError(true);
+          setHasNoEntryError(false);
+          setHasLoadError(true);
         }
       );
   }
@@ -56,14 +60,15 @@ function ByTextSelect(props) {
   useEffect(() => {
     setIsLoading(true);
     forceReload();
-  }, []);
+    setInputText("");
+  }, [props.src]);
 
   return (
     <div
       className={
         isLoading
           ? classes.selectIsLoading + " " + classes.ByTextSelect
-          : hasError
+          : hasLoadError
           ? classes.hasError + " " + classes.ByTextSelect
           : classes.ByTextSelect
       }
@@ -74,7 +79,7 @@ function ByTextSelect(props) {
           id={myId}
           ref={props.innerRef}
           type="text"
-          placeholder="VW, BWM, Ford..."
+          placeholder={props.placeholder}
           onChange={changeHandler}
           onClick={handleFocus}
           value={inputText}
@@ -89,7 +94,15 @@ function ByTextSelect(props) {
           />
         )}
       </div>
-      {hasError && <button onClick={forceReload}>Reload {props.title}</button>}
+      {hasLoadError && (
+        <button onClick={forceReload}>Reload {props.title}</button>
+      )}
+      {hasNoEntryError && (
+        <div className={classes.hasNoEntryError}>
+          Sorry, no {props.title} found for this filter. Please, change the
+          previous filter.
+        </div>
+      )}
     </div>
   );
 }

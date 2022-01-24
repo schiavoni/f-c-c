@@ -18,7 +18,7 @@ function ExpandedSelect(props) {
         return (
           <Clickable
             key={clickable}
-            name={clickable}
+            name={clickable.toLowerCase()}
             index={i}
             isActive={activeIndex === i}
             onTouch={handleClick}

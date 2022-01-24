@@ -22,6 +22,7 @@
   border: 0px solid var(--color-light-grey);
   border-radius: 0.5rem;
   background: transparent;
+  text-transform: capitalize;
 }
 .ExpandedSelect button:hover,
 .ExpandedSelect button.active {

@@ -7,10 +7,19 @@ function SectionSelectCar() {
   const modelRef = useRef();
 
   const [modelSrc, setModelSrc] = useState("");
+  const [progress, setProgress] = useState(0);
 
   function handleMakes(maker) {
-    console.log("maker:" + maker);
-    console.log(makesRef.current.value);
+    if (maker != "") {
+      setModelSrc("models?make=" + maker);
+      setProgress(1);
+    } else {
+      setModelSrc("");
+      setProgress(0);
+    }
+  }
+  function handleModel(model) {
+    console.log("model:" + model);
   }
 
   function submitHandler(event) {
@@ -44,12 +53,21 @@ function SectionSelectCar() {
               <ByTextSelect
                 src="makes"
                 title="Brands"
+                placeholder="VW, Ford, Audi..."
                 innerRef={makesRef}
                 onSelect={handleMakes}
               />
             </li>
             <li>
-              <ByTextSelect src={modelSrc} title="Model" innerRef={modelRef} />
+              {progress > 0 && (
+                <ByTextSelect
+                  src={modelSrc}
+                  title="Model"
+                  placeholder="Golf, Fiesta, A3..."
+                  innerRef={modelRef}
+                  onSelect={handleModel}
+                />
+              )}
             </li>
             <li>
               <label htmlFor="brandTxt">Engine capacity between:</label>

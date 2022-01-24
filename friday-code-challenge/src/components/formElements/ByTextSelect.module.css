@@ -47,14 +47,18 @@
   position: absolute;
   z-index: 2;
   text-align: right;
-  color:var(--color-light-warning)
+  color: var(--color-light-warning);
 }
-.ByTextSelect>button{
-    background: rgb(255, 166, 0);
-    border:1px solid rgb(255, 166, 0, 80%);
-    border-radius: 0.5rem;
-    color:var(--color-light-grey-title);
+.ByTextSelect > button {
+  background: rgb(255, 166, 0);
+  border: 1px solid rgb(255, 166, 0, 80%);
+  border-radius: 0.5rem;
+  color: var(--color-light-grey-title);
 }
 .ExpandedSelect {
-    position: relative; width: 100%;
+  position: relative;
+  width: 100%;
+}
+.ByTextSelect .hasNoEntryError {
+  color: var(--color-light-warning);
 }
