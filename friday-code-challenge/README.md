@@ -16,8 +16,9 @@ To get started, clone this repo and run:
 
 ### `npm install`
 
+Open the `/apiserver` folder an run:
 
-# TODO - scripts to get started
+### `node server`
 
 In the project directory, you can run:
 
