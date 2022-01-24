@@ -1,3 +1,10 @@
+/*
+Vision
+Just a default type of button with some style and the minimal props
+
+UT
+Check if all props are set
+*/
 function Clickable(props) {
   function handleClick() {
     props.onTouch(props.index)

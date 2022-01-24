@@ -1,4 +1,7 @@
-//import logo from "./logo.svg";
+/* 
+UT
+Check the minimal structure of app. If should contain this X set of components
+*/
 import "./App.css";
 import Layout from "./components/structure/Layout.js";
 import Header from "./components/structure/Header";

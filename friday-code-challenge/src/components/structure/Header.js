@@ -1,3 +1,11 @@
+/*
+Vision
+Just the header with a little joke in the title.
+
+UT
+Check if the props are set
+Check if the joke works as expected.
+*/
 import A from "./../general/A";
 import classes from "./Header.module.css";
 

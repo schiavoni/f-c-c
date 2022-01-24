@@ -1,3 +1,10 @@
+/*
+Vision
+Just the footer.
+
+UT
+Check that there is no props
+*/
 import classes from "./Footer.module.css";
 
 function Footer() {

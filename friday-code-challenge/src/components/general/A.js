@@ -1,3 +1,12 @@
+/*
+Vision
+To be used as a template for links with the most basic attrs the project needs
+
+UT
+Check if all props are set
+Only allow textlike elements as children
+*/
+
 import classes from "./A.module.css";
 
 function A(props) {

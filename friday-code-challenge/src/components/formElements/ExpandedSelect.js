@@ -1,3 +1,12 @@
+/*
+Vision
+Just a default type of button with some style and the minimal props
+
+UT
+Check if all props are set
+Check if it filters
+Check differences with cases and special chars from other languages
+*/
 import { useState } from "react";
 import Clickable from "./Clickable";
 import classes from "./ExpandedSelect.module.css";

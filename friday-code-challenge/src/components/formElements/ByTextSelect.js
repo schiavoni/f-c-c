@@ -1,3 +1,14 @@
+/*
+Vision
+The original idea was to simplify the search using text instead of a simple select.
+Creating a little more interaction with this component would allow it to be the default for simple loaded lists.
+
+UT
+Check if all props are set
+Check how if handles errors when loading
+Check how it behaves (if filters) when setting the text
+*/
+
 import { useState, useEffect } from "react";
 import ExpandedSelect from "./ExpandedSelect";
 import classes from "./ByTextSelect.module.css";

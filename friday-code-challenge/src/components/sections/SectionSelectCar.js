@@ -1,3 +1,13 @@
+/*
+This is terrible. Too big, for from single responsability =/
+
+Vision
+This should be a composed section, with all the fields needed for a given step of process.
+If should have a progress bar, linked with the appearance of each field
+
+UT
+Check the composition, if all the relevant components exists
+*/
 import { useRef, useState } from "react";
 import ByTextSelect from "../formElements/ByTextSelect";
 import classes from "./SectionSelectCar.module.css";
